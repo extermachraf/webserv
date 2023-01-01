@@ -55,7 +55,7 @@ size_t Holder::find_endof_line(){
 
 std::string Holder::take_id(){
     std::string return_value;
-    while(am_here  && am_here != ' ' && am_here != '\n'){
+    while(am_here  && (am_here != ' ' && am_here != '\n')){
         return_value += am_here;
         advance();
     }

@@ -39,6 +39,7 @@ Server  parse_data(Holder& holder){
     while(holder.am_here && holder.am_here != '}'){
         holder.skip_all();
         id = holder.take_id();
+        std::cout<<id<<std::endl;
         if(id == "listen" && server.yes_or_no.listen == false){
             server.yes_or_no.listen = true;
             server.listen = holder.take_port();
@@ -63,12 +64,14 @@ Server  parse_data(Holder& holder){
             server.yes_or_no.locations = true;
             std::string loc = holder.take_loc_path();
             holder.loction[loc] = take_location(holder);
+            std::cout<<holder.am_here<<std::endl;
         }
         else if(id == "}")
             break;
         else
             print_eror("error");
     }
+    std::cout<<"here"<<std::endl;
     if(server.yes_or_no.locations == true)
         server.loction = holder.loction;
     if(server.yes_or_no.cgi == true)
